@@ -1,0 +1,41 @@
+import java.util.Scanner;
+import java.util.*;
+
+class TreeNode {
+    int data;
+    TreeNode left, right;
+
+    TreeNode(int d) {
+        data = d;
+        left = right = null;
+    }
+}
+
+class BeingZero {
+    int calculateSumDifference(TreeNode root1, TreeNode root2) {
+        ArrayList<Integer> a1 = new ArrayList<>();
+        ArrayList<Integer> a2 = new ArrayList<>();
+        int sum1 = 0;
+        int sum2 = 0;
+        inorder(root1, a1);
+        inorder(root2, a2);
+        for(int i=0; i<a1.size(); i++)
+            {
+                sum1 = sum1 + a1.get(i);
+            }
+        for(int i=0; i<a2.size(); i++)
+            {
+                sum2 = sum2 + a2.get(i);
+            }
+        return Math.abs(sum1-sum2);
+    }
+    void inorder(TreeNode root, ArrayList<Integer> a)
+    {
+        if(root==null)return;
+        inorder(root.left, a);
+        a.add(root.data);
+        inorder(root.right, a);
+        
+    }
+
+}
