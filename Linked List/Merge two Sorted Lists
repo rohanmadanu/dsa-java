@@ -1,0 +1,61 @@
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class SLLNode{
+	int data;
+	SLLNode next;
+	SLLNode(int d){
+		data = d;
+		next = null;
+	}
+};
+
+class BeingZero{
+	public SLLNode mergeTwoSortedLists(SLLNode A, SLLNode B) {
+		if(A==null) return B;
+		if(B==null) return A;
+
+        SLLNode head = null;
+        SLLNode tail = null;
+        
+        if(A.data<=B.data)
+        {
+            head = A;
+            A = A.next;
+        }
+        else
+        {
+            head = B;
+            B = B.next;
+        }
+
+        tail = head;
+        while(A!=null && B!=null)
+            {
+                if(A.data<=B.data)
+                {
+                    tail.next = A;
+                    A = A.next;
+                }
+                else if(A.data>B.data)
+                {
+                    tail.next = B;
+                    B = B.next;
+                }
+                tail = tail.next;
+            }
+        if(A!=null)
+        {
+            tail.next = A;
+        }
+        else
+        {
+            tail.next = B;
+        }
+        return head;
+	}
+}
