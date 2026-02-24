@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class SLLNode{
+	int data;
+	SLLNode next;
+	SLLNode(int d){
+		data = d;
+		next = null;
+	}
+};
+
+class BeingZero{
+	public SLLNode swapPairs(SLLNode A) {
+	    if(A==null || A.next==null) return A;
+        SLLNode dummy = new SLLNode(0);
+        dummy.next = A;
+
+        SLLNode prev = dummy;
+
+        while(prev.next!=null && prev.next.next!=null)
+            {
+                SLLNode first = prev.next;
+                SLLNode second = first.next;
+
+                first.next = second.next;
+                second.next = first;
+                prev.next = second;
+
+                prev = first;
+            }
+        return dummy.next;
+	}
+}
