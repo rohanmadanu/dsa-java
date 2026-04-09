@@ -8,7 +8,7 @@ import java.util.regex.*;
 class SLLNode{
 	int data;
 	SLLNode next;
-	SLLNode(int d){
+	SLLNode(int d){ 
 		data = d;
 		next = null;
 	}
